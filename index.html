@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Cake Castle | Custom Cakes</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',sans-serif;background:#fff;color:#333}
+
+/* Smooth Scroll */
+html{scroll-behavior:smooth}
+
+/* Container */
+.container{max-width:1100px;margin:auto;padding:20px}
+
+/* Typography */
+h1,h2,h3{font-family:'Poppins',sans-serif}
+
+/* Button */
+.btn{
+background:#ff7aa2;
+color:#fff;
+padding:14px 24px;
+border-radius:30px;
+text-decoration:none;
+display:inline-block;
+margin-top:15px;
+font-weight:600;
+transition:0.3s;
+}
+.btn:hover{
+transform:scale(1.05);
+box-shadow:0 10px 25px rgba(255,122,162,0.4);
+}
+
+/* Hero */
+.hero{
+background:linear-gradient(135deg,#ffe4e9,#ffffff);
+text-align:center;
+padding:100px 20px;
+}
+
+/* Sections */
+.section{padding:70px 20px;text-align:center}
+
+/* Grid */
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:25px;
+margin-top:30px;
+}
+
+/* Cards */
+.card{
+background:#fff;
+padding:20px;
+border-radius:20px;
+box-shadow:0 10px 25px rgba(0,0,0,0.05);
+transition:0.3s;
+}
+.card:hover{transform:translateY(-10px)}
+
+/* Form */
+form{
+background:#ffe4e9;
+padding:25px;
+border-radius:20px;
+max-width:500px;
+margin:auto;
+}
+input,select,textarea{
+width:100%;
+padding:12px;
+margin-top:10px;
+border-radius:10px;
+border:1px solid #ddd;
+}
+
+/* Animation */
+.fade-up{
+opacity:0;
+transform:translateY(40px);
+transition:all 0.8s ease;
+}
+.fade-up.show{
+opacity:1;
+transform:translateY(0);
+}
+
+/* Floating WhatsApp */
+.whatsapp{
+position:fixed;
+bottom:20px;
+right:20px;
+background:#25D366;
+color:#fff;
+padding:16px;
+border-radius:50%;
+font-size:20px;
+text-decoration:none;
+}
+</style>
+</head>
+
+<body>
+
+<!-- HERO -->
+<section class="hero fade-up">
+<div class="container">
+<h1>Custom Cakes That Make Moments Special 🎂</h1>
+<p>Same Day Delivery | Starting from ₹299*</p>
+<small>*Final price depends on design</small><br>
+<a href="https://wa.me/919209062434" class="btn">Order Now</a>
+</div>
+</section>
+
+<!-- BEST SELLERS -->
+<section class="section fade-up">
+<div class="container">
+<h2>Best Selling Cakes</h2>
+
+<div class="grid">
+
+<div class="card">
+<h3>Chocolate Cake</h3>
+<p>Starting from ₹299*</p>
+<a href="https://wa.me/919209062434?text=I want Chocolate Cake" class="btn">Order</a>
+</div>
+
+<div class="card">
+<h3>Red Velvet</h3>
+<p>Starting from ₹299*</p>
+<a href="https://wa.me/919209062434?text=I want Red Velvet Cake" class="btn">Order</a>
+</div>
+
+<div class="card">
+<h3>Butterscotch</h3>
+<p>Starting from ₹299*</p>
+<a href="https://wa.me/919209062434?text=I want Butterscotch Cake" class="btn">Order</a>
+</div>
+
+</div>
+</div>
+</section>
+
+<!-- PRICING -->
+<section class="section fade-up">
+<div class="container">
+<h2>Custom Pricing</h2>
+
+<div class="grid">
+<div class="card">
+<h3>Basic Cakes</h3>
+<p>₹299 – ₹699</p>
+</div>
+
+<div class="card">
+<h3>Designer Cakes</h3>
+<p>₹999 – ₹2999</p>
+</div>
+
+<div class="card">
+<h3>Custom Cakes</h3>
+<p>Depends on Design</p>
+</div>
+</div>
+
+<a href="https://wa.me/919209062434" class="btn">Get Exact Price</a>
+
+</div>
+</section>
+
+<!-- WHY US -->
+<section class="section fade-up">
+<div class="container">
+<h2>Why Choose Us</h2>
+
+<div class="grid">
+<div class="card">Same Day Delivery</div>
+<div class="card">Fresh Cream Cakes</div>
+<div class="card">Custom Designs</div>
+<div class="card">500+ Happy Customers</div>
+</div>
+
+</div>
+</section>
+
+<!-- ORDER FORM -->
+<section class="section fade-up">
+<div class="container">
+<h2>Order Your Cake 🎂</h2>
+
+<form onsubmit="sendToWhatsApp(); return false;">
+
+<input type="text" id="name" placeholder="Your Name" required>
+<input type="tel" id="phone" placeholder="Phone Number" required>
+
+<select id="cake" required>
+<option value="">Select Cake Type</option>
+<option>Birthday Cake</option>
+<option>Photo Cake</option>
+<option>Anniversary Cake</option>
+<option>Custom Cake</option>
+</select>
+
+<input type="date" id="date" required>
+
+<select id="weight">
+<option>Half Kg</option>
+<option>1 Kg</option>
+<option>2 Kg</option>
+<option>Custom</option>
+</select>
+
+<textarea id="message" placeholder="Message on Cake"></textarea>
+
+<button class="btn" type="submit">Order on WhatsApp</button>
+
+</form>
+</div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="section fade-up">
+<div class="container">
+<h2>Make Someone Smile Today ❤️</h2>
+<a href="https://wa.me/919209062434" class="btn">Order Now</a>
+</div>
+</section>
+
+<!-- FLOATING BUTTON -->
+<a href="https://wa.me/919209062434" class="whatsapp">💬</a>
+
+<script>
+// Animation
+const elements = document.querySelectorAll('.fade-up');
+
+function reveal(){
+elements.forEach(el=>{
+const top = el.getBoundingClientRect().top;
+if(top < window.innerHeight - 100){
+el.classList.add('show');
+}
+});
+}
+window.addEventListener('scroll', reveal);
+
+// WhatsApp Form
+function sendToWhatsApp(){
+let name = document.getElementById("name").value;
+let phone = document.getElementById("phone").value;
+let cake = document.getElementById("cake").value;
+let date = document.getElementById("date").value;
+let weight = document.getElementById("weight").value;
+let message = document.getElementById("message").value;
+
+let text = "Hi, I want to order a cake 🎂%0a%0a"
++ "Name: " + name + "%0a"
++ "Phone: " + phone + "%0a"
++ "Cake Type: " + cake + "%0a"
++ "Weight: " + weight + "%0a"
++ "Delivery Date: " + date + "%0a"
++ "Message: " + message;
+
+window.open("https://wa.me/919209062434?text=" + text, '_blank');
+}
+</script>
+
+</body>
+  </html>
