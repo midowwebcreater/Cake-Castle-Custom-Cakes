@@ -4,108 +4,160 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Cake Castle | Luxury Custom Cakes</title>
+<title>Cake Castle | Premium Custom Cakes</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Inter',sans-serif;color:#333;background:#fff}
-html{scroll-behavior:smooth}
 
-/* HERO VIDEO */
+/* BRAND */
+:root{
+--primary:#ff6f9c;
+--secondary:#ffe4ec;
+--dark:#111;
+--text:#555;
+--radius:18px;
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+font-family:'Inter',sans-serif;
+color:var(--dark);
+padding-top:70px; /* FIX HEADER OVERLAP */
+}
+
+/* TYPOGRAPHY */
+h1{font-size:42px}
+h2{font-size:28px;margin-bottom:10px}
+p{color:var(--text);line-height:1.6}
+
+/* LAYOUT */
+.container{max-width:1100px;margin:auto;padding:20px}
+.section{padding:100px 20px;text-align:center}
+
+/* HEADER */
+header{
+position:fixed;
+top:0;width:100%;
+background:#fff;
+box-shadow:0 2px 10px rgba(0,0,0,0.05);
+z-index:1000;
+}
+.nav{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px 20px;
+}
+.logo{font-weight:700;color:var(--primary)}
+.nav a{
+margin-left:15px;
+text-decoration:none;
+color:var(--dark);
+}
+.cta{
+background:var(--primary);
+color:#fff;
+padding:8px 16px;
+border-radius:20px;
+}
+
+/* HERO */
 .hero{
-position:relative;
-height:100vh;
+min-height:100vh;
+padding:120px 20px;
 display:flex;
 align-items:center;
 justify-content:center;
 text-align:center;
+background:url('images/banner.jpg') center/cover no-repeat;
 color:#fff;
-overflow:hidden;
-}
-.hero video{
-position:absolute;
-top:0;left:0;
-width:100%;height:100%;
-object-fit:cover;
-z-index:-1;
+position:relative;
 }
 .hero::after{
 content:'';
 position:absolute;
 width:100%;height:100%;
-background:linear-gradient(rgba(0,0,0,0.5),rgba(255,122,162,0.3));
-z-index:-1;
+background:rgba(0,0,0,0.6);
 }
-.hero .content{
-background:rgba(0,0,0,0.3);
-padding:40px;
-border-radius:20px;
-backdrop-filter:blur(10px);
-}
+.hero .content{position:relative;z-index:2}
 
 /* BUTTON */
 .btn{
-background:#ff7aa2;
+background:var(--primary);
 color:#fff;
-padding:14px 28px;
+padding:14px 26px;
 border-radius:30px;
 text-decoration:none;
 display:inline-block;
 margin-top:20px;
 transition:0.3s;
 }
-.btn:hover{transform:scale(1.05)}
-
-/* SECTION */
-.section{padding:100px 20px;text-align:center}
-
-/* PARALLAX */
-.parallax{
-background:url('images/parallax.jpg') center/cover fixed;
-color:#fff;
+.btn:hover{
+transform:scale(1.05);
+box-shadow:0 10px 20px rgba(0,0,0,0.1);
 }
 
 /* GRID */
 .grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:30px;
+gap:25px;
 margin-top:40px;
 }
 
 /* CARD */
 .card{
-background:rgba(255,255,255,0.8);
-backdrop-filter:blur(12px);
+background:#fff;
 padding:25px;
-border-radius:20px;
-box-shadow:0 15px 40px rgba(0,0,0,0.1);
-transition:0.4s;
+border-radius:var(--radius);
+box-shadow:0 10px 25px rgba(0,0,0,0.06);
+transition:0.3s;
 }
-.card:hover{
-transform:translateY(-12px);
+.card:hover{transform:translateY(-8px)}
+
+/* PARALLAX FIX */
+.parallax{
+background:url('images/parallax.jpg') center/cover no-repeat;
+padding:120px 20px;
+color:#fff;
 }
 
-/* GALLERY */
+/* GALLERY FIX */
 .gallery img{
 width:100%;
-border-radius:20px;
-transition:0.4s;
+aspect-ratio:1/1;
+object-fit:cover;
+border-radius:var(--radius);
+transition:0.3s;
 }
-.gallery img:hover{
-transform:scale(1.08);
+.gallery img:hover{transform:scale(1.05)}
+
+/* TESTIMONIAL SCROLL FIX */
+.testimonial-wrapper{
+overflow:hidden;
+margin-top:40px;
+}
+.testimonial-track{
+display:flex;
+width:max-content;
+animation:scroll 25s linear infinite;
+}
+.testimonial{
+min-width:250px;
+margin:10px;
+padding:20px;
+background:#fff;
+border-radius:var(--radius);
+box-shadow:0 10px 20px rgba(0,0,0,0.05);
+}
+@keyframes scroll{
+0%{transform:translateX(0)}
+100%{transform:translateX(-50%)}
 }
 
 /* FORM */
-form{
-background:#ffe4e9;
-padding:30px;
-border-radius:20px;
-max-width:500px;
-margin:auto;
-}
+form{max-width:500px;margin:auto}
 input,select,textarea{
 width:100%;
 padding:14px;
@@ -113,16 +165,15 @@ margin-top:10px;
 border-radius:10px;
 border:1px solid #ddd;
 }
-
-/* ANIMATION */
-.fade{
-opacity:0;
-transform:translateY(40px);
-transition:1s;
+input:focus,textarea:focus,select:focus{
+border:1px solid var(--primary);
+outline:none;
 }
-.fade.show{
-opacity:1;
-transform:translateY(0);
+
+/* MOBILE FIX */
+@media(max-width:600px){
+h1{font-size:28px}
+.nav div{display:none;}
 }
 
 /* WHATSAPP */
@@ -132,51 +183,110 @@ bottom:20px;
 right:20px;
 background:#25D366;
 color:#fff;
-padding:18px;
+padding:16px;
 border-radius:50%;
-font-size:22px;
 }
+
+/* FOOTER */
+footer{
+background:#ffe4ec;
+padding:40px;
+text-align:center;
+}
+
 </style>
 </head>
 
 <body>
 
-<!-- HERO VIDEO -->
-<section class="hero">
-<video autoplay muted loop>
-<source src="video/banner.mp4" type="video/mp4">
-</video>
+<!-- HEADER -->
+<header>
+<div class="nav container">
+<div class="logo">Cake Castle</div>
+<div>
+<a href="#home">Home</a>
+<a href="#gallery">Gallery</a>
+<a href="#contact">Contact</a>
+<a href="https://wa.me/919209062434" class="cta">Order</a>
+</div>
+</div>
+</header>
 
+<!-- HERO -->
+<section id="home" class="hero">
 <div class="content">
-<h1>Cake Castle – Luxury Cakes Experience 🎂</h1>
-<p>Custom Cakes | Same Day Delivery | Premium Designs</p>
+<h1>Luxury Cakes That Make Moments Special 🎂</h1>
+<p>Custom Designs | Same Day Delivery</p>
+<p style="color:#ff4d6d;">⚡ Only 12 Orders Available Today</p>
+<p>⭐ 500+ Happy Customers</p>
 <a href="https://wa.me/919209062434" class="btn">Order Now</a>
 </div>
 </section>
 
 <!-- ABOUT -->
-<section class="section fade">
+<section class="section">
+<div class="container">
 <h2>About Us</h2>
-<p>We craft premium cakes designed to make your moments unforgettable.</p>
+<p>We craft premium cakes designed for unforgettable celebrations.</p>
+</div>
+</section>
+
+<!-- PRICING -->
+<section class="section">
+<div class="container">
+<h2>Pricing</h2>
+<div class="grid">
+<div class="card">₹299–₹699</div>
+<div class="card">₹999–₹2999</div>
+<div class="card">Custom Pricing</div>
+</div>
+</div>
 </section>
 
 <!-- PARALLAX -->
-<section class="section parallax">
-<h2>Every Cake is a Masterpiece 🎨</h2>
+<section class="parallax">
+<h2>Every Cake is a Work of Art 🎨</h2>
 </section>
 
 <!-- GALLERY -->
-<section class="section fade">
-<h2>Our Creations</h2>
+<section id="gallery" class="section">
+<div class="container">
+<h2>Our Cakes</h2>
 <div class="grid gallery">
 <img src="images/cake1.jpg">
 <img src="images/cake2.jpg">
 <img src="images/cake3.jpg">
 </div>
+</div>
+</section>
+
+<!-- TESTIMONIAL -->
+<section class="section">
+<div class="container">
+<h2>What Customers Say</h2>
+
+<div class="testimonial-wrapper">
+<div class="testimonial-track">
+
+<div class="testimonial">Amazing cake ❤️</div>
+<div class="testimonial">Best in city 🎂</div>
+<div class="testimonial">Loved the design 😍</div>
+<div class="testimonial">Super fresh cake</div>
+
+<div class="testimonial">Amazing cake ❤️</div>
+<div class="testimonial">Best in city 🎂</div>
+<div class="testimonial">Loved the design 😍</div>
+<div class="testimonial">Super fresh cake</div>
+
+</div>
+</div>
+
+</div>
 </section>
 
 <!-- ORDER -->
-<section class="section fade">
+<section id="contact" class="section">
+<div class="container">
 <h2>Order Your Cake</h2>
 
 <form onsubmit="sendToWhatsApp(); return false;">
@@ -195,20 +305,18 @@ font-size:22px;
 <button class="btn">Order on WhatsApp</button>
 </form>
 
+</div>
 </section>
+
+<footer>
+<p><strong>Cake Castle</strong></p>
+<p>Pimpri | Custom Cakes 🎂</p>
+<p>📞 9209062434</p>
+</footer>
 
 <a href="https://wa.me/919209062434" class="whatsapp">💬</a>
 
 <script>
-const f=document.querySelectorAll('.fade');
-window.addEventListener('scroll',()=>{
-f.forEach(el=>{
-if(el.getBoundingClientRect().top<window.innerHeight-100){
-el.classList.add('show');
-}
-});
-});
-
 function sendToWhatsApp(){
 let name=document.getElementById("name").value;
 let phone=document.getElementById("phone").value;
@@ -216,7 +324,7 @@ let cake=document.getElementById("cake").value;
 let date=document.getElementById("date").value;
 let message=document.getElementById("message").value;
 
-let text="Hi I want to order cake 🎂%0a"
+let text="Hi I want cake 🎂%0a"
 +"Name:"+name+"%0a"
 +"Phone:"+phone+"%0a"
 +"Cake:"+cake+"%0a"
@@ -228,4 +336,4 @@ window.open("https://wa.me/919209062434?text="+text);
 </script>
 
 </body>
-</html>
+  </html>
