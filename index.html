@@ -4,32 +4,35 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Cake Castle | Premium Custom Cakes</title>
+<title>Cake Castle | Luxury Custom Cakes</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
 
-/* BRAND */
+/* ===== BRAND SYSTEM ===== */
 :root{
---primary:#ff6f9c;
---secondary:#ffe4ec;
---dark:#111;
---text:#555;
---radius:18px;
+--bg:#0f0f0f;
+--card:#1a1a1a;
+--primary:#e6b17e;
+--text:#ffffff;
+--muted:#aaaaaa;
+--radius:16px;
 }
 
+/* RESET */
 *{margin:0;padding:0;box-sizing:border-box}
 body{
 font-family:'Inter',sans-serif;
-color:var(--dark);
-padding-top:70px; /* FIX HEADER OVERLAP */
+background:var(--bg);
+color:var(--text);
+padding-top:70px;
 }
 
 /* TYPOGRAPHY */
 h1{font-size:42px}
 h2{font-size:28px;margin-bottom:10px}
-p{color:var(--text);line-height:1.6}
+p{color:var(--muted);line-height:1.6}
 
 /* LAYOUT */
 .container{max-width:1100px;margin:auto;padding:20px}
@@ -39,25 +42,25 @@ p{color:var(--text);line-height:1.6}
 header{
 position:fixed;
 top:0;width:100%;
-background:#fff;
-box-shadow:0 2px 10px rgba(0,0,0,0.05);
+background:rgba(15,15,15,0.7);
+backdrop-filter:blur(10px);
+border-bottom:1px solid rgba(255,255,255,0.05);
 z-index:1000;
 }
 .nav{
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:15px 20px;
 }
-.logo{font-weight:700;color:var(--primary)}
+.logo{color:var(--primary);font-weight:600}
 .nav a{
+color:#fff;
 margin-left:15px;
 text-decoration:none;
-color:var(--dark);
 }
 .cta{
 background:var(--primary);
-color:#fff;
+color:#000;
 padding:8px 16px;
 border-radius:20px;
 }
@@ -65,27 +68,34 @@ border-radius:20px;
 /* HERO */
 .hero{
 min-height:100vh;
-padding:120px 20px;
 display:flex;
 align-items:center;
 justify-content:center;
 text-align:center;
 background:url('images/banner.jpg') center/cover no-repeat;
-color:#fff;
 position:relative;
 }
 .hero::after{
 content:'';
 position:absolute;
 width:100%;height:100%;
-background:rgba(0,0,0,0.6);
+background:linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.9));
 }
-.hero .content{position:relative;z-index:2}
+.hero .content{
+position:relative;
+z-index:2;
+animation:float 5s ease-in-out infinite;
+}
+@keyframes float{
+0%{transform:translateY(0)}
+50%{transform:translateY(-10px)}
+100%{transform:translateY(0)}
+}
 
 /* BUTTON */
 .btn{
 background:var(--primary);
-color:#fff;
+color:#000;
 padding:14px 26px;
 border-radius:30px;
 text-decoration:none;
@@ -95,61 +105,51 @@ transition:0.3s;
 }
 .btn:hover{
 transform:scale(1.05);
-box-shadow:0 10px 20px rgba(0,0,0,0.1);
+box-shadow:0 10px 25px rgba(230,177,126,0.3);
 }
 
-/* GRID */
-.grid{
+/* MENU GRID */
+.menu-grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
 gap:25px;
 margin-top:40px;
 }
-
-/* CARD */
-.card{
-background:#fff;
-padding:25px;
-border-radius:var(--radius);
-box-shadow:0 10px 25px rgba(0,0,0,0.06);
-transition:0.3s;
-}
-.card:hover{transform:translateY(-8px)}
-
-/* PARALLAX FIX */
-.parallax{
-background:url('images/parallax.jpg') center/cover no-repeat;
-padding:120px 20px;
-color:#fff;
-}
-
-/* GALLERY FIX */
-.gallery img{
-width:100%;
-aspect-ratio:1/1;
-object-fit:cover;
-border-radius:var(--radius);
-transition:0.3s;
-}
-.gallery img:hover{transform:scale(1.05)}
-
-/* TESTIMONIAL SCROLL FIX */
-.testimonial-wrapper{
+.menu-card{
+background:var(--card);
+border-radius:16px;
 overflow:hidden;
-margin-top:40px;
+cursor:pointer;
+transition:0.4s;
+text-align:left;
 }
+.menu-card img{
+width:100%;
+height:180px;
+object-fit:cover;
+}
+.menu-card h3{padding:15px 15px 5px}
+.menu-card p{
+padding:0 15px 15px;
+color:var(--primary);
+font-weight:600;
+}
+.menu-card:hover{
+transform:translateY(-10px) scale(1.02);
+}
+
+/* TESTIMONIAL */
+.testimonial-wrapper{overflow:hidden}
 .testimonial-track{
 display:flex;
-width:max-content;
 animation:scroll 25s linear infinite;
 }
 .testimonial{
 min-width:250px;
 margin:10px;
 padding:20px;
-background:#fff;
+background:var(--card);
 border-radius:var(--radius);
-box-shadow:0 10px 20px rgba(0,0,0,0.05);
 }
 @keyframes scroll{
 0%{transform:translateX(0)}
@@ -163,17 +163,16 @@ width:100%;
 padding:14px;
 margin-top:10px;
 border-radius:10px;
-border:1px solid #ddd;
-}
-input:focus,textarea:focus,select:focus{
-border:1px solid var(--primary);
-outline:none;
+border:1px solid #333;
+background:#1a1a1a;
+color:#fff;
 }
 
-/* MOBILE FIX */
+/* MOBILE */
 @media(max-width:600px){
 h1{font-size:28px}
 .nav div{display:none;}
+.btn{width:100%}
 }
 
 /* WHATSAPP */
@@ -189,7 +188,7 @@ border-radius:50%;
 
 /* FOOTER */
 footer{
-background:#ffe4ec;
+background:#111;
 padding:40px;
 text-align:center;
 }
@@ -199,14 +198,13 @@ text-align:center;
 
 <body>
 
-<!-- HEADER -->
 <header>
 <div class="nav container">
 <div class="logo">Cake Castle</div>
 <div>
 <a href="#home">Home</a>
-<a href="#gallery">Gallery</a>
-<a href="#contact">Contact</a>
+<a href="#menu">Menu</a>
+<a href="#contact">Order</a>
 <a href="https://wa.me/919209062434" class="cta">Order</a>
 </div>
 </div>
@@ -216,46 +214,46 @@ text-align:center;
 <section id="home" class="hero">
 <div class="content">
 <h1>Luxury Cakes That Make Moments Special 🎂</h1>
-<p>Custom Designs | Same Day Delivery</p>
-<p style="color:#ff4d6d;">⚡ Only 12 Orders Available Today</p>
-<p>⭐ 500+ Happy Customers</p>
+<p>Custom Cakes | Same Day Delivery</p>
+<p style="color:#e6b17e;">⚡ Starting ₹299</p>
 <a href="https://wa.me/919209062434" class="btn">Order Now</a>
 </div>
 </section>
 
-<!-- ABOUT -->
-<section class="section">
+<!-- MENU -->
+<section id="menu" class="section">
 <div class="container">
-<h2>About Us</h2>
-<p>We craft premium cakes designed for unforgettable celebrations.</p>
-</div>
-</section>
+<h2>Our Menu</h2>
 
-<!-- PRICING -->
-<section class="section">
-<div class="container">
-<h2>Pricing</h2>
-<div class="grid">
-<div class="card">₹299–₹699</div>
-<div class="card">₹999–₹2999</div>
-<div class="card">Custom Pricing</div>
-</div>
-</div>
-</section>
+<div class="menu-grid">
 
-<!-- PARALLAX -->
-<section class="parallax">
-<h2>Every Cake is a Work of Art 🎨</h2>
-</section>
+<div class="menu-card" onclick="selectCake('Butterscotch Cake')">
+<img src="images/cake1.jpg"><h3>Butterscotch</h3><p>₹350</p></div>
 
-<!-- GALLERY -->
-<section id="gallery" class="section">
-<div class="container">
-<h2>Our Cakes</h2>
-<div class="grid gallery">
-<img src="images/cake1.jpg">
-<img src="images/cake2.jpg">
-<img src="images/cake3.jpg">
+<div class="menu-card" onclick="selectCake('Pineapple Cake')">
+<img src="images/cake2.jpg"><h3>Pineapple</h3><p>₹350</p></div>
+
+<div class="menu-card" onclick="selectCake('Black Forest Cake')">
+<img src="images/cake3.jpg"><h3>Black Forest</h3><p>₹700</p></div>
+
+<div class="menu-card" onclick="selectCake('Chocolate Truffle')">
+<img src="images/cake4.jpg"><h3>Chocolate Truffle</h3><p>₹430</p></div>
+
+<div class="menu-card" onclick="selectCake('Blueberry Cake')">
+<img src="images/cake5.jpg"><h3>Blueberry</h3><p>₹370</p></div>
+
+<div class="menu-card" onclick="selectCake('Dutch Chocolate Cake')">
+<img src="images/cake6.jpg"><h3>Dutch Chocolate</h3><p>₹1100</p></div>
+
+<div class="menu-card" onclick="selectCake('Chocolate Pastry')">
+<img src="images/p1.jpg"><h3>Chocolate Pastry</h3><p>₹110</p></div>
+
+<div class="menu-card" onclick="selectCake('Black Forest Pastry')">
+<img src="images/p2.jpg"><h3>Black Forest Pastry</h3><p>₹110</p></div>
+
+<div class="menu-card" onclick="selectCake('White Chocolate Pastry')">
+<img src="images/p3.jpg"><h3>White Chocolate Pastry</h3><p>₹110</p></div>
+
 </div>
 </div>
 </section>
@@ -263,24 +261,22 @@ text-align:center;
 <!-- TESTIMONIAL -->
 <section class="section">
 <div class="container">
-<h2>What Customers Say</h2>
-
+<h2>Happy Customers</h2>
 <div class="testimonial-wrapper">
 <div class="testimonial-track">
 
-<div class="testimonial">Amazing cake ❤️</div>
-<div class="testimonial">Best in city 🎂</div>
-<div class="testimonial">Loved the design 😍</div>
-<div class="testimonial">Super fresh cake</div>
+<div class="testimonial">Best cake in Pimpri 🎂</div>
+<div class="testimonial">Amazing design ❤️</div>
+<div class="testimonial">Fast delivery 🚀</div>
+<div class="testimonial">Loved it 😍</div>
 
-<div class="testimonial">Amazing cake ❤️</div>
-<div class="testimonial">Best in city 🎂</div>
-<div class="testimonial">Loved the design 😍</div>
-<div class="testimonial">Super fresh cake</div>
+<div class="testimonial">Best cake in Pimpri 🎂</div>
+<div class="testimonial">Amazing design ❤️</div>
+<div class="testimonial">Fast delivery 🚀</div>
+<div class="testimonial">Loved it 😍</div>
 
 </div>
 </div>
-
 </div>
 </section>
 
@@ -293,14 +289,16 @@ text-align:center;
 <input type="text" id="name" placeholder="Name" required>
 <input type="tel" id="phone" placeholder="Phone" required>
 
-<select id="cake">
-<option>Custom Cake</option>
-<option>Birthday Cake</option>
+<input type="text" id="cake" placeholder="Selected Cake" readonly required>
+
+<select id="weight">
+<option>0.5 Kg</option>
+<option>1 Kg</option>
+<option>2 Kg</option>
 </select>
 
 <input type="date" id="date">
-
-<textarea id="message" placeholder="Message"></textarea>
+<textarea id="message" placeholder="Custom Message"></textarea>
 
 <button class="btn">Order on WhatsApp</button>
 </form>
@@ -310,24 +308,31 @@ text-align:center;
 
 <footer>
 <p><strong>Cake Castle</strong></p>
-<p>Pimpri | Custom Cakes 🎂</p>
+<p>Premium Custom Cakes 🎂</p>
 <p>📞 9209062434</p>
 </footer>
 
 <a href="https://wa.me/919209062434" class="whatsapp">💬</a>
 
 <script>
+function selectCake(name){
+document.getElementById("cake").value=name;
+window.location.href="#contact";
+}
+
 function sendToWhatsApp(){
 let name=document.getElementById("name").value;
 let phone=document.getElementById("phone").value;
 let cake=document.getElementById("cake").value;
+let weight=document.getElementById("weight").value;
 let date=document.getElementById("date").value;
 let message=document.getElementById("message").value;
 
-let text="Hi I want cake 🎂%0a"
+let text="Hi, I want to order a cake 🎂%0a"
 +"Name:"+name+"%0a"
 +"Phone:"+phone+"%0a"
 +"Cake:"+cake+"%0a"
++"Weight:"+weight+"%0a"
 +"Date:"+date+"%0a"
 +"Message:"+message;
 
@@ -336,4 +341,4 @@ window.open("https://wa.me/919209062434?text="+text);
 </script>
 
 </body>
-  </html>
+</html>
